@@ -1,13 +1,13 @@
 :root {
-  --bg: #0b1220;
-  --surface: #121b2d;
-  --surface-2: #1a2640;
-  --text: #e6edf7;
-  --muted: #a7b7d6;
-  --accent: #39bdf8;
+  --bg: #2f3640;
+  --surface: #353d4a;
+  --surface-2: #3d4654;
+  --text: #e7edf7;
+  --muted: #b2c0d6;
+  --accent: #69a8ff;
   --accent-2: #7cf5d0;
-  --border: #2a3858;
-  --shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  --border: #4c596d;
+  --shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
 }
 
 * {
@@ -19,7 +19,7 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.7;
   color: var(--text);
-  background: radial-gradient(circle at top right, #18294e, var(--bg) 45%);
+  background: radial-gradient(circle at top right, #3f4d63, var(--bg) 48%);
 }
 
 /* Lab 7 Task 03 — Header Flexbox */
@@ -27,7 +27,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  background: linear-gradient(120deg, #10213e, #182e59);
+  background: linear-gradient(120deg, #343f52, #3a485e);
   border-bottom: 1px solid var(--border);
   padding: 1.25rem 1.5rem;
   gap: 1rem;
@@ -46,7 +46,7 @@ h1 {
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--accent-2);
-  background: rgba(57, 189, 248, 0.12);
+  background: rgba(105, 168, 255, 0.14);
   border: 1px solid var(--accent);
   border-radius: 999px;
 }
@@ -57,9 +57,9 @@ nav {
   top: 0;
   z-index: 100;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  background: linear-gradient(120deg, #10213e, #182e59);
+  background: linear-gradient(120deg, #303b4c, #39465b);
   border-bottom: 1px solid var(--border);
-  padding: 0.65rem 1.5rem;
+  padding: 0.4rem 1rem;
 }
 
 /* Lab 7 Task 01 — Flex Navigation */
@@ -77,13 +77,26 @@ nav li {
 }
 
 nav a {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   text-decoration: none;
   color: var(--text);
-  padding: 0.5rem 1rem;
+  padding: 0.35rem 0.75rem;
   border-bottom: 3px solid transparent;
-  transition: border-color 0.25s ease, color 0.25s ease;
+  transition: border-color 0.25s ease, color 0.25s ease, background-color 0.25s ease;
 }
+
+nav a::before {
+  font-size: 0.82rem;
+  line-height: 1;
+}
+
+.nav-about::before { content: "\1F464"; }
+.nav-skills::before { content: "\2699"; }
+.nav-projects::before { content: "\1F4C1"; }
+.nav-education::before { content: "\1F393"; }
+.nav-contact::before { content: "\260E"; }
 
 nav a:hover,
 nav a:focus-visible {
@@ -129,6 +142,12 @@ h2 {
 h3 {
   color: var(--accent);
   margin-bottom: 0.4rem;
+}
+
+/* Keep anchor targets visible below sticky navigation */
+section[id],
+aside[id] {
+  scroll-margin-top: 4.5rem;
 }
 
 /* Lab 7 Task 04 — Profile Figure Centering */
@@ -289,12 +308,12 @@ dd {
 }
 
 a {
-  color: #87d3ff;
+  color: #8fc2ff;
 }
 
 a:hover,
 a:focus-visible {
-  color: #c7fff1;
+  color: #9cffdf;
 }
 
 footer {
@@ -325,7 +344,39 @@ footer p {
   }
 
   nav ul {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.25rem;
+  }
+
+  nav a {
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-bottom-width: 1px;
+    border-radius: 8px;
+    background: rgba(26, 35, 49, 0.78);
+    padding: 0.35rem 0.25rem;
+    font-size: 0.78rem;
+    gap: 0.2rem;
+  }
+
+  nav {
+    padding: 0.25rem 0.4rem;
+  }
+
+  nav a::before {
+    font-size: 0.72rem;
+  }
+
+  nav a:hover,
+  nav a:focus-visible {
+    border-color: var(--accent);
+    background: rgba(105, 168, 255, 0.16);
+  }
+
+  section[id],
+  aside[id] {
+    scroll-margin-top: 5.3rem;
   }
 
   aside {
