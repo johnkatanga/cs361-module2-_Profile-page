@@ -22,50 +22,84 @@ body {
   background: radial-gradient(circle at top right, #18294e, var(--bg) 45%);
 }
 
+/* Lab 7 Task 03 — Header Flexbox */
 header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   background: linear-gradient(120deg, #10213e, #182e59);
   border-bottom: 1px solid var(--border);
-  padding: 1.25rem 1rem;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  padding: 1.25rem 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 h1 {
-  margin: 0 0 0.75rem;
+  margin: 0;
   font-size: clamp(1.5rem, 3vw, 2.1rem);
   letter-spacing: 0.02em;
 }
 
+.availability-badge {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-2);
+  background: rgba(57, 189, 248, 0.12);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+}
+
+/* Lab 8 Task 04 — Sticky Navigation */
 nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(120deg, #10213e, #182e59);
+  border-bottom: 1px solid var(--border);
+  padding: 0.65rem 1.5rem;
+}
+
+/* Lab 7 Task 01 — Flex Navigation */
+nav ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin: 0;
 }
 
 nav a {
+  display: inline-block;
   text-decoration: none;
   color: var(--text);
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.03);
-  padding: 0.45rem 0.85rem;
-  border-radius: 999px;
-  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  padding: 0.5rem 1rem;
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.25s ease, color 0.25s ease;
 }
 
 nav a:hover,
 nav a:focus-visible {
-  transform: translateY(-1px);
-  border-color: var(--accent);
+  border-bottom-color: var(--accent);
   color: var(--accent-2);
 }
 
-.layout {
-  width: min(1100px, 92%);
-  margin: 1.5rem auto;
-  display: flex;
-  gap: 1.25rem;
-  align-items: flex-start;
+/* Lab 8 Task 01 — Grid Page Layout */
+.page-wrapper {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  align-items: start;
 }
 
 main,
@@ -77,15 +111,14 @@ aside {
 }
 
 main {
-  flex: 2.2;
   padding: 1.25rem;
+  min-width: 0;
 }
 
 aside {
-  flex: 1;
   padding: 1.25rem;
   position: sticky;
-  top: 6.2rem;
+  top: 4.5rem;
 }
 
 h2 {
@@ -98,7 +131,12 @@ h3 {
   margin-bottom: 0.4rem;
 }
 
-figure {
+/* Lab 7 Task 04 — Profile Figure Centering */
+.profile-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   margin: 0 0 1rem;
   background: var(--surface-2);
   border: 1px solid var(--border);
@@ -106,17 +144,95 @@ figure {
   overflow: hidden;
 }
 
-img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
+.profile-figure img {
+  transition: transform 0.25s ease;
 }
 
-figcaption {
+.profile-figure:hover img {
+  transform: scale(1.05);
+}
+
+.profile-figure figcaption {
   color: var(--muted);
   font-size: 0.95rem;
   padding: 0.75rem 0.9rem;
+}
+
+/* Lab 8 Task 02 — Responsive Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.profile-figure img {
+  width: 100%;
+  max-height: min(620px, 75vh);
+  height: auto;
+  object-fit: contain;
+  object-position: center center;
+}
+
+/* Lab 7 Task 02 — Skills Tag Badges */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.skills-list li {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 0.65rem 1rem;
+  font-size: 0.9rem;
+  max-width: 100%;
+  flex: 1 1 280px;
+}
+
+.skills-list .skill-name {
+  display: block;
+  font-weight: 700;
+  color: var(--accent-2);
+  margin-bottom: 0.35rem;
+}
+
+.skills-list .skill-detail {
+  display: block;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+/* Lab 7 Task 05 — Projects Card Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.1rem 1.15rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+  margin-top: 0;
+  font-size: 1.05rem;
+  color: var(--accent-2);
+}
+
+.card p {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
 }
 
 ul,
@@ -124,8 +240,13 @@ ol {
   padding-left: 1.2rem;
 }
 
-li {
+article ul:not(.skills-list) li,
+article ol li {
   margin-bottom: 0.4rem;
+}
+
+section:not(:last-child) {
+  margin-bottom: 1.75rem;
 }
 
 dl {
@@ -177,8 +298,13 @@ a:focus-visible {
 }
 
 footer {
-  width: min(1100px, 92%);
-  margin: 0 auto 1.6rem;
+  max-width: 1100px;
+  margin: 1.5rem auto 1.6rem;
+  padding: 0 1.5rem;
+}
+
+footer p {
+  margin: 0;
   border: 1px solid var(--border);
   border-radius: 12px;
   background: var(--surface);
@@ -188,13 +314,21 @@ footer {
   box-shadow: var(--shadow);
 }
 
-@media (max-width: 900px) {
-  .layout {
+/* Lab 8 Task 03 — Mobile Media Query */
+@media (max-width: 768px) {
+  .page-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 1.35rem;
+  }
+
+  nav ul {
     flex-direction: column;
   }
 
   aside {
-    width: 100%;
     position: static;
   }
 }
